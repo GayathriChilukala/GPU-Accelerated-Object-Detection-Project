@@ -1,26 +1,142 @@
-# Core Dependencies
+# ============================================================================
+# GPU-Accelerated Object Detection - Requirements
+# ============================================================================
+# 
+# Installation:
+#   pip install -r requirements.txt
+#
+# GPU Support:
+#   Ensure CUDA 11.8+ is installed
+#   Visit: https://developer.nvidia.com/cuda-toolkit
+# ============================================================================
+
+# Core Deep Learning Framework
 torch>=2.0.0
 torchvision>=0.15.0
-numpy>=1.24.0
-opencv-python>=4.8.0
 
-# GPU Optimization
-torch-cuda>=11.8  # CUDA support
+# CUDA Support (automatically installed with torch+cuda)
+# For CPU only: use torch and torchvision without cuda suffix
+
+# ============================================================================
+# PHASE 1: Model Training
+# ============================================================================
 
 # Data Processing
+numpy>=1.24.0
 scipy>=1.10.0
 Pillow>=9.5.0
+
+# Dataset Handling
+pycocotools>=2.0.6  # For COCO dataset format
+
+# Training Utilities
+tqdm>=4.65.0  # Progress bars
+
+# ============================================================================
+# PHASE 2: Performance Optimization
+# ============================================================================
+
+# Visualization
 matplotlib>=3.7.0
 seaborn>=0.12.0
 
-# Visualization & Analysis
-tqdm>=4.65.0
-tensorboard>=2.13.0
+# Performance Monitoring
+tensorboard>=2.13.0  # Optional: training visualization
 
-# Export & Deployment
+# ============================================================================
+# PHASE 3: Video Processing
+# ============================================================================
+
+# Video Processing
+opencv-python>=4.8.0  # or opencv-python-headless for servers
+
+# Object Tracking
+scipy>=1.10.0  # Hungarian algorithm (linear_sum_assignment)
+
+# ============================================================================
+# PHASE 4: Deployment
+# ============================================================================
+
+# Model Export
 onnx>=1.14.0
-onnxruntime-gpu>=1.15.0  # Use onnxruntime for CPU
+onnxruntime-gpu>=1.15.0  # Use onnxruntime for CPU-only
 
-# Optional
+# Optimization
+# torch.quantization is built into PyTorch
+
+# ============================================================================
+# Development & Testing (Optional)
+# ============================================================================
+
+# Jupyter Notebooks
 jupyter>=1.0.0
+ipykernel>=6.23.0
+ipywidgets>=8.0.0
+
+# Testing
 pytest>=7.3.0
+pytest-cov>=4.1.0
+
+# Code Quality
+black>=23.3.0  # Code formatter
+flake8>=6.0.0  # Linter
+mypy>=1.3.0    # Type checker
+
+# ============================================================================
+# Additional Utilities
+# ============================================================================
+
+# File Management
+pathlib2>=2.3.7; python_version < '3.4'
+
+# Configuration
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# Logging
+loguru>=0.7.0  # Better logging
+
+# ============================================================================
+# Version-Specific Notes
+# ============================================================================
+#
+# PyTorch Installation:
+# ---------------------
+# For CUDA 11.8:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+#
+# For CUDA 12.1:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+#
+# For CPU only:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+#
+# For ROCm (AMD GPUs):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/rocm5.4.2
+#
+# ============================================================================
+# Known Compatibility Issues
+# ============================================================================
+#
+# 1. NumPy >= 1.24 required for Python 3.11+
+# 2. OpenCV may require system libraries:
+#    Ubuntu/Debian: sudo apt-get install libgl1-mesa-glx libglib2.0-0
+#    CentOS/RHEL: sudo yum install mesa-libGL
+# 3. ONNX Runtime GPU requires CUDA libraries in system PATH
+#
+# ============================================================================
+# Minimal Installation (Core Only)
+# ============================================================================
+#
+# If you want minimal installation for inference only:
+#   pip install torch torchvision opencv-python numpy
+#
+# ============================================================================
+# Google Colab Notes
+# ============================================================================
+#
+# Colab comes with most packages pre-installed.
+# Additional packages needed:
+#   !pip install pycocotools
+#
+# ============================================================================
