@@ -1658,20 +1658,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 📧 Contact
-
-Your Name - your.email@example.com
-
-Project Link: [https://github.com/yourusername/gpu-object-detection](https://github.com/yourusername/gpu-object-detection)
-
----
-
 ## 🙏 Acknowledgments
 
 - PyTorch team for the excellent framework
